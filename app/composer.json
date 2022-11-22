@@ -1,0 +1,15 @@
+{
+  "name": "crud/mvc",
+  "autoload": {
+    "psr-4": {
+      "Crud\\Mvc\\": ""
+    }
+  },
+  "authors": [
+    {
+      "name": "Anton Ramancou"
+    }
+  ],
+  "require": {
+  }
+}
