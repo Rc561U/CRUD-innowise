@@ -9,7 +9,7 @@
 
 .box {
     padding: 37px;
-    width: max-content;
+    width: auto;
     outline: none;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -17,6 +17,68 @@
     color: black;
 }
 
+.box-show {
+    padding: 37px;
+    width: 900px;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 15px;
+    color: black;
+}
+
+.box_main {
+    padding: 37px;
+    width: 1500px;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 15px;
+    color: black;
+}
+
+
+table tr {
+    cursor: pointer;
+}
+tr:hover {
+    background-color: #ffff99 !important;
+}
+
+.alert-create {
+    padding: 20px;
+    background-color: rgba(92, 184, 92, 0.7);
+    border-radius: 6px;
+    margin-bottom: 35px;
+}
+.alert-update {
+    padding: 20px;
+    background-color: #5bc0de;
+    border-radius: 6px;
+    margin-bottom: 35px;
+}
+.alert-delete {
+    padding: 20px;
+    background-color: rgba(253, 7, 0, 0.64);
+    border-radius: 6px;
+    margin-bottom: 35px;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+/**/
 
 .star {
     color: red;
@@ -31,76 +93,114 @@ body {
     color: #910707;
 }
 
+.actions {
+    display: flex;
+    justify-content: space-between;
+}
 
-/**/
+.btn{
+    margin-right: 20px;
+}
+
+#btn-danger{
+    color: #d50505;
+}
+
+#btn-success{
+    color: #0b9f01;
+}
 
 
-/* CSS */
-.button-17 {
-    align-items: center;
-    appearance: none;
-    background-color: #fff;
-    border-radius: 12px;
-    border-style: none;
-    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
-    box-sizing: border-box;
-    color: #3c4043;
-    cursor: pointer;
-    display: inline-flex;
-    fill: currentcolor;
-    font-family: "Google Sans", Roboto, Arial, sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    height: 48px;
-    justify-content: center;
-    letter-spacing: .25px;
-    line-height: normal;
-    max-width: 100%;
-    overflow: visible;
-    padding: 2px 24px;
+ /* CSS */
+.button-1 {
+     background-color: #0275d8;
+     border-radius: 8px;
+     border-style: none;
+     box-sizing: border-box;
+     color: #FFFFFF;
+     cursor: pointer;
+     display: inline-block;
+     font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+     font-size: 14px;
+     font-weight: 500;
+     height: 40px;
+     line-height: 20px;
+     list-style: none;
+     margin: 0;
+     outline: none;
+     padding: 10px 16px;
+     position: relative;
+     text-align: center;
+     text-decoration: none;
+     transition: color 100ms;
+     vertical-align: baseline;
+     user-select: none;
+     -webkit-user-select: none;
+     touch-action: manipulation;
+}
+
+.button-1:hover,
+.button-1:focus {
+    background-color: rgba(27, 52, 220, 0.89);
+}
+
+
+.modal {
+    display:none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    top:35%;
+    left:50%;
+    color: #4a4a4a;
+    max-width: max-content;
     position: relative;
-    text-align: center;
-    text-transform: none;
-    transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    width: auto;
-    will-change: transform, opacity;
-    z-index: 0;
+    border-radius:10px;
+    border: 1px solid #ccc;
+    width: 80%; /* Could be more or less, depending on screen size */
+    transform: translate(-50% , -50%);
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
 }
 
-.button-17:hover {
-    background: #F6F9FE;
-    color: #174ea6;
+.modal-header{
+    justify-content: center;
+    align-items: stretch;
+    box-shadow: 0 1px 1px rgb(10 10 10 / 10%);
+    display: flex;
 }
 
-.button-17:active {
-    box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
-    outline: none;
+.modal-footer{
+    justify-content: center;
+    box-shadow: 0 1px 1px rgb(10 10 10 / 10%);
+    display: flex;
+    margin-left: 6px !important;
+    margin-top: 6px !important;
 }
 
-.button-17:focus {
-    outline: none;
-    border: 2px solid #4285f4;
+.errorMsg{
+    color: #bb0303;
 }
 
-.button-17:not(:disabled) {
-    box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+.error{
+    margin-bottom: 10px;
 }
 
-.button-17:not(:disabled):hover {
-    box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+select {
+    margin-bottom: 0 !important;
 }
 
-.button-17:not(:disabled):focus {
-    box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
-}
-
-.button-17:not(:disabled):active {
-    box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
-}
-
-.button-17:disabled {
-    box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+input{
+    margin-bottom: 0 !important;
 }

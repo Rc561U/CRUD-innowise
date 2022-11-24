@@ -65,7 +65,14 @@ class ResponseProcessor
      */
     protected function renderBody(mixed $body): void
     {
-        include_once $body;
+        $result = $body['content'] ?? null;
+        $status = $body['status'] ?? null;
+        $errors = $body['errors'] ?? null;
+
+
+        include_once "app/views/layouts/header.php";
+        include_once $body['template'];
+        include_once "app/views/layouts/footer.php";
     }
 
     protected function renderBodyJson(mixed $body): void
