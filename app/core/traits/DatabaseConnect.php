@@ -6,7 +6,7 @@ use Crud\Mvc\core\traits\Singleton;
 use Exception;
 use \PDO;
 
-trait DatabaseConnect
+class DatabaseConnect
 {
     use Singleton;
 
