@@ -47,7 +47,7 @@
 
                     <!-- Gender dropdown -->
                     <label for="gender">Gender</label>
-                    <select required name="gender" class="form-control text-center" id="gender">
+                    <select required name="gender" class="form-control" id="gender">
                     <?php if (isset($errors) && isset($errors['gender'])): ?>
 
                             <option value="" selected disabled hidden>-- Choose your gender --</option>

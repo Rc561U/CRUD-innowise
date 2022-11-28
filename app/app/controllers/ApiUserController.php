@@ -7,6 +7,7 @@ use Crud\Mvc\core\AbstractController;
 
 class ApiUserController extends AbstractController
 {
+
     public $model;
 
     public function __construct($request, $response)
@@ -19,7 +20,7 @@ class ApiUserController extends AbstractController
     public function validate()
     {
         $jsonRequest = ($this->request->getJsonRequest());
-        if (@$this->model->getEmail($jsonRequest["email"]) == $this->model->getEmailById($jsonRequest["user_id"])){
+        if (@$this->model->getEmail($jsonRequest["email"]) == @$this->model->getEmailById($jsonRequest["user_id"])){
             $this->response->setBodyJson(["available" => true]);
         }
         elseif (@$this->model->getEmail($jsonRequest["email"])) {

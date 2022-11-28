@@ -5,9 +5,12 @@ namespace Crud\Mvc\app\controllers;
 use Crud\Mvc\app\models\User;
 use Crud\Mvc\core\AbstractController;
 use Crud\Mvc\core\http\response\ResponseInterface;
+use Crud\Mvc\core\traits\Pagination;
 
 class UsersController extends AbstractController
 {
+    use Pagination;
+
     private static mixed $errors;
     private object $model;
 
@@ -20,9 +23,18 @@ class UsersController extends AbstractController
 
     public function index(): ResponseInterface
     {
-        $result['content'] = $this->model->readUser();
+        $content = $this->model->readUser();
         $result['template'] = "app/views/users/index.php";
         $result['status'] = $_SESSION['status'] ?? null;
+
+        $page = $_GET['page'] ?? 1;
+        $per_page = 10;
+        $total = $this->model->get_count("users");
+        $this->make($page, $per_page, $total);
+        $start = $this->get_start();
+        $result['pagination'] = $this->get_html();
+
+        $result['content'] = $this->model->get_users($start, $per_page);
         $this->response->setBody($result);
         return $this->response;
     }
