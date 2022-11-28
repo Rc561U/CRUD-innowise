@@ -7,7 +7,7 @@ trait Pagination
     public int $count_pages = 1;
     public int $current_page = 1;
     public string $uri = '';
-    public int $mid_size = 5;
+    public int $mid_size = 3;
     public int $all_pages = 10;
     public int $page;
     public int $per_page;
