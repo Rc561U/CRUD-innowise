@@ -16,6 +16,8 @@ class Router
     protected static array $route;
     protected static string $controller;
     protected static string $action;
+    protected static ?int $id;
+    private static string $path = "\Crud\Mvc\app\controllers\\";
     private ResponseProcessor $responseProcessor;
     private RequestInterface $request;
 
@@ -60,18 +62,26 @@ class Router
     public static function dispatch($url): void
     {
         if (self::matchRoute($url)) {
-            $controller = "\Crud\Mvc\app\controllers\\" . ucfirst(self::$route['controller']) . "Controller";
+            $controller = self::$path . ucfirst(self::$route['controller']) . "Controller";
             $action = self::$route['action'];
+            $apiController = self::$controller = self::$path . 'Api' . ucfirst(self::$route['controller']) . "Controller";
+
             if (class_exists($controller) && method_exists($controller, $action)) {
+                if (isset(self::$route['id'])) {
+                    self::$id = self::$route['id'];
+                }
                 self::$controller = $controller;
                 self::$action = $action;
+            } elseif (class_exists($apiController) && method_exists($apiController, $action)) {
+                self::$action = $action;
+                self::$controller = $apiController;
             } else {
-                self::$controller = "\Crud\Mvc\app\controllers\NotFoundController";
+                self::$controller = self::$path . "NotFoundController";
                 self::$action = "index";
             }
         } else {
             http_response_code(404);
-            require_once "app/views/404.php";
+            require_once "app/views/errors/404.php";
             exit;
         }
     }
@@ -80,7 +90,7 @@ class Router
      * @param $url
      * @return bool
      */
-    public static function matchRoute($url): bool
+    public static function matchRoute($url)
     {
         foreach (self::$routes as $pattern => $route) {
             if (preg_match("#$pattern#i", $url, $matches)) {
@@ -99,6 +109,7 @@ class Router
         return false;
     }
 
+
     /**
      * @return void
      */
@@ -108,16 +119,20 @@ class Router
         $controller = self::$controller;
         $action = self::$action;
         $controllerClass = new $controller($this->request, $response);
-        $response = $controllerClass->$action();
+        if (isset(self::$id)) {
+            $response = $controllerClass->$action(self::$id);
+        } else {
+            $response = $controllerClass->$action();
+        }
         $this->responseProcessor->process($response);
     }
 
 
     /**
-     * @param $type
+     * @param string $type
      * @return ResponseInterface
      */
-    private function createResponseObject($type): ResponseInterface
+    private function createResponseObject(string $type): ResponseInterface
     {
         return match ($type) {
             'json' => new JsonResponse(),

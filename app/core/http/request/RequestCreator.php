@@ -3,8 +3,6 @@
 namespace Crud\Mvc\core\http\request;
 
 
-
-
 use Crud\Mvc\core\http\exception\RouterException;
 
 class RequestCreator implements RequestCreatorInterface

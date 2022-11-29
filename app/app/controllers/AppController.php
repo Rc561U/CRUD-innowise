@@ -3,6 +3,7 @@
 namespace Crud\Mvc\app\controllers;
 
 use Crud\Mvc\core\AbstractController;
+use Crud\Mvc\core\http\response\ResponseInterface;
 
 class AppController extends AbstractController
 {
@@ -11,10 +12,11 @@ class AppController extends AbstractController
         parent::__construct($request, $response);
     }
 
-    public function index()
+
+    public function index(): ResponseInterface
     {
-        $path = 'app/views/home.php';
-        $this->response->setBody($path);
+        $result['template'] = "app/views/home/index.php";
+        $this->response->setBody($result);
         return $this->response;
     }
 }
