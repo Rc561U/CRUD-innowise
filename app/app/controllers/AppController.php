@@ -15,7 +15,7 @@ class AppController extends AbstractController
 
     public function index(): ResponseInterface
     {
-        $result['template'] = "app/views/home/index.php";
+        $result = ['template' => 'home_templates/home.html.twig', 'data' => null];
         $this->response->setBody($result);
         return $this->response;
     }

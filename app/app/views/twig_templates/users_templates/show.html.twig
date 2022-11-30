@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>{{ data.content.full_name }}</title>{% endblock %}
+{% block body %}
+    <div class="container" id="container">
+        <div class="box-show">
+            <h4>Information about <i>{{ data.content.full_name }}</i></h4>
+            <table class="table table-striped">
+                <tr>
+                    <th>Email</th>
+                    <th>Full Name</th>
+                    <th>Gender</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>{{ data.content.email }}</td>
+                    <td>{{ data.content.full_name }}</td>
+                    <td>{{ data.content.gender }}</td>
+                    <td>{{ data.content.status }}</td>
+                    <td>
+                        <a href="/users/edit/{{ data.content.user_id }}" class="btn" id="btn-success"><i
+                                    class="fa fa-pencil-square fa-2x" aria-hidden="true"></i></a>
+                        <a href="/users/delete/{{ data.content.user_id }}" class="btn" id="btn-danger"><i
+                                    class="fa fa-trash fa-2x" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            </table>
+            <div class="link-right">
+                <a href="/users" class="link-primary">Return to main page</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

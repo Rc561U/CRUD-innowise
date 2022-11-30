@@ -13,7 +13,7 @@ class UsersController extends AbstractController
 
     private static mixed $errors;
     private object $model;
-
+    private int $start;
     public function __construct($request, $response)
 
     {
@@ -23,25 +23,30 @@ class UsersController extends AbstractController
 
     public function index(): ResponseInterface
     {
-        $content = $this->model->readUser();
-        $result['template'] = "app/views/users/index.php";
         $result['status'] = $_SESSION['status'] ?? null;
+        unset($_SESSION['status']);
+        $result['pagination'] = $this->getPage();
 
-        $page = $_GET['page'] ?? 1;
-        $per_page = 10;
-        $total = $this->model->get_count("users");
-        $this->make($page, $per_page, $total);
-        $start = $this->get_start();
-        $result['pagination'] = $this->get_html();
+        $result['content'] = $this->model->get_users($this->start , $this->per_page);
+        $result = ['template' => 'users_templates/index.html.twig', "data" => $result];
 
-        $result['content'] = $this->model->get_users($start, $per_page);
         $this->response->setBody($result);
         return $this->response;
     }
 
+    private function getPage():string
+    {
+        $page = $this->request->getParams()['page'] ?? 1;
+        $this->per_page = 10;
+        $total = $this->model->get_count("users");
+        $this->make($page, $this->per_page, $total);
+        $this->start = $this->get_start();
+        return $this->get_html();
+    }
+
     public function new(): ResponseInterface //GET
     {
-        $result['template'] = "app/views/users/new.php";
+        $result = ['template' => 'users_templates/new.html.twig', "data" => null];
         $this->response->setBody($result);
         return $this->response;
     }
@@ -53,15 +58,14 @@ class UsersController extends AbstractController
         if (!self::$errors) {
             $this->response->setHeaders(['Location: /users']);
             $_SESSION['status'] = "create";
-            $result['template'] = "app/views/users/index.php";
-            $this->response->setBody(null);
+            $result = ['template' => 'users_templates/new.html.twig', "data" => null];
 
         } else {
-            $result['template'] = "app/views/users/new.php";
             $result['errors'] = self::$errors;
-//            $this->response->setHeaders(['Location: /users/new']);
-            $this->response->setBody($result);
+            $result['content'] = $this->request->getPost();
+            $result = ['template' => 'users_templates/new.html.twig', "data" => $result];
         }
+        $this->response->setBody($result);
         return $this->response;
 
     }
@@ -70,7 +74,7 @@ class UsersController extends AbstractController
     public function edit(int $id): ResponseInterface //GET
     {
         $result['content'] = $this->model->getUserById($id);
-        $result['template'] = "app/views/users/edit.php";
+        $result = ['template' => 'users_templates/edit.html.twig', "data" => $result];
         $this->response->setBody($result);
         return $this->response;
     }
@@ -79,7 +83,7 @@ class UsersController extends AbstractController
     public function show($id): ResponseInterface //GET
     {
         $result['content'] = $this->model->getUserById($id);
-        $result['template'] = "app/views/users/show.php";
+        $result = ['template' => 'users_templates/show.html.twig', "data" => $result];
         $this->response->setBody($result);
         return $this->response;
     }
@@ -91,23 +95,25 @@ class UsersController extends AbstractController
         if (!self::$errors) {
             $this->response->setHeaders(['Location: /users']);
             $_SESSION['status'] = "update";
-            $result['template'] = "app/views/users/index.php";
-            $this->response->setBody($result);
+            $result['status'] = $_SESSION['status'];
+            $result = ['template' => 'users_templates/index.html.twig', "data" => $result]; // status
         } else {
-            $result['template'] = "app/views/users/edit.php";
             $result['errors'] = self::$errors;
-            $this->response->setBody($result);
-        }
+            $result['content'] = $this->request->getPost();
+            $result = ['template' => 'users_templates/edit.html.twig', "data" => $result];
 
+        }
+        $this->response->setBody($result);
         return $this->response;
     }
 
     public function delete($id): ResponseInterface //DELETE
     {
         $this->model->deleteUserById($id);
-        $result['template'] = "app/views/users/index.php";
         $_SESSION['status'] = "delete";
         $this->response->setHeaders(['Location: /users']);
+
+        $result = ['template' => 'users_templates/index.html.twig', "data" => null];
         $this->response->setBody($result);
         return $this->response;
     }

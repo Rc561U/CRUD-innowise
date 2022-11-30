@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Update</title>{% endblock %}
+{% block body %}
+<div class="container " id="container">
+    <div class="box">
+        <h3 class="display-4 text-center">Update</h3><br>
+        <div class="row">
+            <div class="col">
+                <form method="post" id="update_form" action="/users/update">
+
+                    <!-- Email unique -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        {% if data.errors.email is defined  %}
+                            <input type="email" class="form-control" id="email" name="email"
+                                   value="" placeholder="name@example.com">
+                            <div class="errorMsg">
+                                {{ data.errors.email }}
+                            </div>
+
+                        {% else %}
+                            <input type="email" class="form-control" id="email" name="email"
+                                   value="{{ data.content.email }}" placeholder="name@example.com">
+                        {% endif %}
+
+                    </div>
+
+                    <!-- First and last name -->
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        {% if data.errors.name is defined  %}
+                            <input type="text" class="form-control" id="name" name="name"
+                                   value="">
+                            <div class="errorMsg">
+                                {{ data.errors.name }}
+                            </div>
+                        {% elseif  data.content.name %}
+                            <input type="text" class="form-control" id="name" name="name"
+                                   value="{{ data.content.name }}">
+                        {% else %}
+                            <input type="text" class="form-control" id="name" name="name"
+                                   value="{{ data.content.full_name }}">
+                        {% endif %}
+                    </div>
+
+                    <!-- Gender dropdown -->
+                    <div class="mb-3 text-left" >
+                        <label for="gender">Gender</label>
+                        <select required name="gender" class="form-control" id="gender">
+                            <option value="Male" {{ (data.content.gender == "Male") ? "selected=\"selected\"" : '' }}>Male</option>
+                            <option value="Female" {{ (data.content.gender == "Female") ? "selected=\"selected\"" : '' }}>Female</option>
+                        </select>
+                    </div>
+
+                    <!-- Status dropdown -->
+                    <div class="mb-3">
+                        <label for="status">Status</label>
+                            <select required name="status" class="form-control" id="status">
+                                <option value="Active" {{ (data.content.status == "Active") ? "selected=\"selected\"" : '' }}>Active</option>
+                                <option value="Inactive" {{ (data.content.status == "Inactive") ? "selected=\"selected\"" : '' }}>Inactive</option>
+                            </select>
+                    </div>
+
+                    <input type="hidden"
+                           name="id"
+                           id="user_id"
+                    value="{{ data.content.user_id is defined ?  data.content.user_id : data.content.id }}"
+
+                    hidden>
+
+                    <div class="row">
+                        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                        <p>or view <a href="/users">existing</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}<script src="/assets/javascript/JustValidate/update_validations.js" defer></script>{% endblock %}
+

@@ -2,8 +2,6 @@ addEventListener("click", function (event) {
     if (event.target.id === "monoDelete") {
         let anchor = document.getElementById('delete_link');
         anchor.href = "users/delete/" + event.target.value;
-    } else if (event.target.id === "btn btn-danger") {
-
     }
 })
 
