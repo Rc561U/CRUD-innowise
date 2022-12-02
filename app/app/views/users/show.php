@@ -3,7 +3,7 @@
 <div class="container">
     <div class="box-show">
         <h2>Information about <i><?php echo $result['full_name']; ?></i></h2>
-        <table>
+        <table class="table table-striped">
             <tr>
                 <th>Email</th>
                 <th>Full Name</th>

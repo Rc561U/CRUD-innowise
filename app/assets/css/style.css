@@ -1,4 +1,4 @@
-.container {
+#container {
     min-height: 80vh;
     display: flex;
     justify-content: center;
@@ -19,7 +19,7 @@
 
 .box-show {
     padding: 37px;
-    width: 900px;
+    width: auto;
     outline: none;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -29,7 +29,7 @@
 
 .box_main {
     padding: 37px;
-    width: 1500px;
+    width: auto;
     outline: none;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -41,9 +41,10 @@
 table tr {
     cursor: pointer;
 }
-tr:hover {
-    background-color: #ffff99 !important;
-}
+/*tr:hover {*/
+/*    background-color: #ffff99 !important;*/
+/*}*/
+
 
 .alert-create {
     padding: 20px;
@@ -98,9 +99,7 @@ body {
     justify-content: space-between;
 }
 
-.btn{
-    margin-right: 20px;
-}
+
 
 #btn-danger{
     color: #d50505;
@@ -145,49 +144,50 @@ body {
 }
 
 
-.modal {
-    display:none;
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
-}
+/*.modal {*/
+/*    display:none;*/
+/*    position: fixed; !* Stay in place *!*/
+/*    z-index: 1; !* Sit on top *!*/
+/*    left: 0;*/
+/*    top: 0;*/
+/*    width: 100%; !* Full width *!*/
+/*    height: 100%; !* Full height *!*/
+/*    background-color: rgb(0,0,0); !* Fallback color *!*/
+/*    background-color: rgba(0,0,0,0.7); !* Black w/ opacity *!*/
+/*}*/
 
-/* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
-    top:35%;
-    left:50%;
-    color: #4a4a4a;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px; /* Need a specific value to work */
     max-width: max-content;
-    position: relative;
-    border-radius:10px;
-    border: 1px solid #ccc;
-    width: 80%; /* Could be more or less, depending on screen size */
-    transform: translate(-50% , -50%);
-    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 20px;
-    font-weight: 500;
+    /*position: fixed;*/
+    /*border-radius:10px;*/
+    /*border: 1px solid #ccc;*/
+    /*width: 80%; !* Could be more or less, depending on screen size *!*/
+    /*transform: translate(-50% , -50%);*/
+    /*font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    /*font-size: 20px;*/
+    /*font-weight: 500;*/
 }
 
-.modal-header{
-    justify-content: center;
-    align-items: stretch;
-    box-shadow: 0 1px 1px rgb(10 10 10 / 10%);
-    display: flex;
-}
+/*.modal-header{*/
+/*    justify-content: center;*/
+/*    align-items: stretch;*/
+/*    box-shadow: 0 1px 1px rgb(10 10 10 / 10%);*/
+/*    display: flex;*/
+/*}*/
 
-.modal-footer{
-    justify-content: center;
-    box-shadow: 0 1px 1px rgb(10 10 10 / 10%);
-    display: flex;
-    margin-left: 6px !important;
-    margin-top: 6px !important;
-}
+/*.modal-footer{*/
+/*    justify-content: center;*/
+/*    box-shadow: 0 1px 1px rgb(10 10 10 / 10%);*/
+/*    display: flex;*/
+/*    margin-left: 6px !important;*/
+/*    margin-top: 6px !important;*/
+/*}*/
 
 .errorMsg{
     color: #bb0303;

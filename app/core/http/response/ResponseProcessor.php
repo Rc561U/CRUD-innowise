@@ -68,6 +68,7 @@ class ResponseProcessor
         $result = $body['content'] ?? null;
         $status = $body['status'] ?? null;
         $errors = $body['errors'] ?? null;
+        $pagination = $body['pagination'] ?? null;
 
 
         include_once "app/views/layouts/header.php";

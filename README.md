@@ -12,7 +12,7 @@ cd app/
 ```
 
 ```
-composer instal
+composer install
 ```
 
 ```

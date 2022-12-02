@@ -65,6 +65,7 @@ class Router
             $controller = "\Crud\Mvc\app\controllers\\" . ucfirst(self::$route['controller']) . "Controller";
             $action = self::$route['action'];
             if (class_exists($controller) && method_exists($controller, $action)) {
+
                 if (isset(self::$route['id'])) {
                     self::$id = self::$route['id'];
                 }

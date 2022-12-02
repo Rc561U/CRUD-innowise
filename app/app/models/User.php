@@ -89,4 +89,16 @@ class User extends AbstractModel
         $sth->execute([$email]);
         return $sth->fetch(PDO::FETCH_ASSOC)['email'] ?? false;
     }
+
+    function get_count($table): int
+    {
+        $res = $this->database->query("SELECT COUNT(*) FROM {$table}");
+        return $res->fetchColumn();
+    }
+
+    function get_users($start, $per_page): array
+    {
+        $res = $this->database->query("SELECT * FROM `users` LIMIT $start, $per_page");
+        return $res->fetchAll();
+    }
 }
