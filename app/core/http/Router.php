@@ -16,6 +16,7 @@ class Router
     protected static array $route;
     protected static string $controller;
     protected static string $action;
+    protected static ?int $id;
     private ResponseProcessor $responseProcessor;
     private RequestInterface $request;
 
@@ -60,9 +61,13 @@ class Router
     public static function dispatch($url): void
     {
         if (self::matchRoute($url)) {
+
             $controller = "\Crud\Mvc\app\controllers\\" . ucfirst(self::$route['controller']) . "Controller";
             $action = self::$route['action'];
             if (class_exists($controller) && method_exists($controller, $action)) {
+                if (isset(self::$route['id'])) {
+                    self::$id = self::$route['id'];
+                }
                 self::$controller = $controller;
                 self::$action = $action;
             } else {
@@ -71,7 +76,7 @@ class Router
             }
         } else {
             http_response_code(404);
-            require_once "app/views/404.php";
+            require_once "app/views/errors/404.php";
             exit;
         }
     }
@@ -108,7 +113,11 @@ class Router
         $controller = self::$controller;
         $action = self::$action;
         $controllerClass = new $controller($this->request, $response);
-        $response = $controllerClass->$action();
+        if (isset(self::$id)) {
+            $response = $controllerClass->$action(self::$id);
+        } else {
+            $response = $controllerClass->$action();
+        }
         $this->responseProcessor->process($response);
     }
 

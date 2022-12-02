@@ -13,8 +13,8 @@ class NotFoundController extends AbstractController
 
     public function index()
     {
-        $path = 'app/views/404.php';
-        $this->response->setBody($path);
+        $result['template'] = "app/views/errors/404.php";
+        $this->response->setBody($result);
         return $this->response;
     }
 }
