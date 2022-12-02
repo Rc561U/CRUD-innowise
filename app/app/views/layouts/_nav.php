@@ -18,7 +18,7 @@
                         Data source
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Local database</a></li>
+                        <li><a class="dropdown-item" href="/users">Local database</a></li>
                         <li><a class="dropdown-item" href="#">gorest REST API</a></li>
                     </ul>
                 </li>
