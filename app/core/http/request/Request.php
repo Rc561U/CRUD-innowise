@@ -46,6 +46,7 @@ class Request implements RequestInterface
         $this->contentType = $contentType;
         $this->params = $params;
         $this->post = $post;
+
     }
 
     /**

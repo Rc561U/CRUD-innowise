@@ -19,7 +19,7 @@ validation
         },
         {
             validator: (value) => () => {
-                return fetch("/api/user/validate", {
+                return fetch("/api/users/validate", {
                     method: 'POST',
                     body: JSON.stringify({'email': value, "user_id": user_id.value}),
                 })

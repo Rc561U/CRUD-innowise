@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 
 use Crud\Mvc\core\http\Router;
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__, '.envphp');
 $dotenv->load();
 
 $app = new Router();

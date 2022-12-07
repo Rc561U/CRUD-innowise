@@ -22,7 +22,7 @@ $(function () {
 });
 
 
-// delete multiple users
+// delete multiple user's data
 $('#multiple_delete').click(function () {
     var myarray = [];
     $('input:checkbox:checked').each(function () {
@@ -32,12 +32,11 @@ $('#multiple_delete').click(function () {
     });
     $.ajax({
         type: "POST",
-        url: "api/user/delete",
+        url: "api/users/delete",
         data: JSON.stringify(myarray),
         contentType: "application/json",
         success: function (data) {
-            let status = jQuery.parseJSON(data);
-            if (status) {
+            if (data) {
                 location.reload();
             }
         }

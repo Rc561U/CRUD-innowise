@@ -26,6 +26,9 @@ class Router
         $res = new RequestCreator();
         $this->request = $res->create();
         $this->responseProcessor = new ResponseProcessor();
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST');
+        header("Access-Control-Allow-Headers: X-Requested-With");
     }
 
     /**
@@ -43,6 +46,7 @@ class Router
      */
     public function run(): void
     {
+
         $this->mapRequest();
     }
 
@@ -65,24 +69,27 @@ class Router
             $controller = self::$path . ucfirst(self::$route['controller']) . "Controller";
             $action = self::$route['action'];
             $apiController = self::$controller = self::$path . 'Api' . ucfirst(self::$route['controller']) . "Controller";
+            if ( !empty(self::$route['api']) && class_exists($apiController) && method_exists($apiController, $action)) {
 
-            if (class_exists($controller) && method_exists($controller, $action)) {
+                self::$action = $action;
+                self::$controller = $apiController;
+                if (isset(self::$route['id'])) {
+                    self::$id = self::$route['id'];
+                }
+            } elseif (class_exists($controller) && method_exists($controller, $action)) {
                 if (isset(self::$route['id'])) {
                     self::$id = self::$route['id'];
                 }
                 self::$controller = $controller;
                 self::$action = $action;
-            } elseif (class_exists($apiController) && method_exists($apiController, $action)) {
-                self::$action = $action;
-                self::$controller = $apiController;
-            } else {
+            }  else {
                 self::$controller = self::$path . "NotFoundController";
                 self::$action = "index";
             }
         } else {
             http_response_code(404);
-            require_once "app/views/errors/404.php";
-            exit;
+            self::$controller = self::$path . "NotFoundController";
+            self::$action = "index";
         }
     }
 
@@ -99,7 +106,7 @@ class Router
                         $route[$key] = $value;
                     }
                 }
-                if (!isset($route['action'])) {
+                if (!isset($route['action'])|| ($route['action']) == "") {
                     $route['action'] = 'index';
                 }
                 self::$route = $route;
@@ -115,15 +122,20 @@ class Router
      */
     private function mainProcessor(): void
     {
-        $response = $this->createResponseObject('html');
         $controller = self::$controller;
         $action = self::$action;
+        if (str_contains($controller, "Api")){
+            $response = $this->createResponseObject('json');
+        }else {
+            $response = $this->createResponseObject('html');
+        }
         $controllerClass = new $controller($this->request, $response);
         if (isset(self::$id)) {
             $response = $controllerClass->$action(self::$id);
         } else {
             $response = $controllerClass->$action();
         }
+
         $this->responseProcessor->process($response);
     }
 

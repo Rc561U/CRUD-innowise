@@ -20,6 +20,7 @@ class ResponseProcessor
         $loader = new FilesystemLoader('app/views/twig_templates');
         $this->twig = new Environment($loader);
         $this->clearHeaders();
+
         $this->processHeaders($response->getHeaders());
         $this->setCode($response->getCode());
         if (!empty($response->getCookie())) {
@@ -71,15 +72,6 @@ class ResponseProcessor
      */
     protected function renderBody(mixed $body): void
     {
-//        $result = $body['content'] ?? null;
-//        $status = $body['status'] ?? null;
-//        $errors = $body['errors'] ?? null;
-//        $pagination = $body['pagination'] ?? null;
-//
-//
-//        include_once "app/views/layouts/header.php";
-//        include_once $body['template'];
-//        include_once "app/views/layouts/footer.php";
         $template = $body['template'];
         $data = $body['data'];
         echo $this->twig->render($template, ['data' => $data]);

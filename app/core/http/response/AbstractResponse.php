@@ -41,7 +41,8 @@ abstract class AbstractResponse implements ResponseInterface
      */
     public function setHeaders(array $headers): void
     {
-        $this->headers = $headers;
+
+        $this->headers = array_merge($this->headers,$headers);
     }
 
     /**

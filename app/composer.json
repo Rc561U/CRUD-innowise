@@ -13,6 +13,7 @@
   "require": {
     "vlucas/phpdotenv": "^5.5",
     "fakerphp/faker": "^1.20",
-    "twig/twig": "^2.0"
+    "twig/twig": "^2.0",
+    "guzzlehttp/guzzle": "^6.3"
   }
 }
