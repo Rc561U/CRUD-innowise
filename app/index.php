@@ -4,8 +4,9 @@ require 'vendor/autoload.php';
 
 use Crud\Mvc\core\http\Router;
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__, '.envphp');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__, '.env-php');
 $dotenv->load();
+
 
 $app = new Router();
 Router::add('^$', ['controller' => 'App', 'action' => 'index']);

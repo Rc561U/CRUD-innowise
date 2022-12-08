@@ -78,15 +78,20 @@ class ApiUsersController extends AbstractController
 
 
     /**
-     * @throws GuzzleException
+     * @OA\Get(
+     *     path="/api/users",
+     *     summary="Get list all users",
+     *     tags={"Users"},
+     *     @OA\Response(response="200", description="An example resource")
+     * )
      */
     private function handleResponse(string $method)
     {
         return match ($method) {
             'GET' => ApiUser::get($this->id,$this->request->getParams(),$this->response) ,
-            'POST' => ApiUser::post($this->request->getJsonRequest()),
-            'DELETE' => ApiUser::delete($this->id),
-            'PATCH' =>  ApiUser::patch($this->id, $this->request->getJsonRequest()),
+            'POST' => ApiUser::post($this->request->getJsonRequest(),$this->response),
+            'DELETE' => ApiUser::delete($this->id,$this->response),
+            'PATCH' =>  ApiUser::patch($this->id, $this->request->getJsonRequest(),$this->response),
         };
     }
 
