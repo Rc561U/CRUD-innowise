@@ -83,21 +83,21 @@ export default {
 </script>
 
 <style scoped>
-.post_list-item {
-    display: inline-block;
-    margin-right: 10px;
-
-}
+.post_list-move, /* apply transition to moving elements */
 .post_list-enter-active,
 .post_list-leave-active {
-    transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
+
 .post_list-enter-from,
 .post_list-leave-to {
-    opacity: 0;
-    transform: translateX(50px);
+  opacity: 0;
+  transform: translateX(30px);
 }
-.post_list-move {
-    transition: transform 0.8s ease;
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.post_list-leave-active {
+  position: absolute;
 }
 </style>

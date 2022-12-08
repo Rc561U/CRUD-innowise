@@ -1,3 +1,5 @@
+import JustValidate from 'just-validate';
+
 const validation = new JustValidate("#create_form", {
     errorFieldCssClass: "is-invalid",
     errorFieldStyle: {
@@ -19,7 +21,7 @@ validation
         },
         {
             validator: (value) => () => {
-                return fetch("users/validate", {
+                return fetch("/api/users/validate", {
                     method: 'POST',
                     body: JSON.stringify({'email': value}),
                 })

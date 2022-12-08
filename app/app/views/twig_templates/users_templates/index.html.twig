@@ -62,7 +62,6 @@
             </tr>
             </thead>
             <tbody>
-
             {% for user in data.content %}
             <tr data-link="user/{{ user.user_id }}" data-target="_BLANK">
                 <th>
@@ -71,7 +70,7 @@
                                       value="{{ user.user_id }}"></label>
                     </div>
                 </th>
-                <th scope="row"><?= $i ?></th>
+                <th scope="row">{{ loop.index }}</th>
                 <td>{{ user.email }}</td>
                 <td>{{ user.full_name }}</td>
                 <td>{{ user.gender }}</td>
@@ -125,4 +124,4 @@
 </div>
 
 {% endblock %}
-{% block js %}<script rel="stylesheet" src="/assets/javascript/script.js"></script>{% endblock %}
+{% block js %}<script rel="stylesheet" src="assets/javascript/script.js"></script>{% endblock %}

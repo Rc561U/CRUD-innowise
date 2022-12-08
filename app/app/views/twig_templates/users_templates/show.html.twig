@@ -18,10 +18,8 @@
                     <td>{{ data.content.gender }}</td>
                     <td>{{ data.content.status }}</td>
                     <td>
-                        <a href="/users/edit/{{ data.content.user_id }}" class="btn" id="btn-success"><i
-                                    class="fa fa-pencil-square fa-2x" aria-hidden="true"></i></a>
-                        <a href="/users/delete/{{ data.content.user_id }}" class="btn" id="btn-danger"><i
-                                    class="fa fa-trash fa-2x" aria-hidden="true"></i></a>
+                        <a href="/users/edit/{{ data.content.user_id }}"  id="btn-success"><span class="mdi mdi-pencil-circle mdi-36px"></span></a>
+                        <a href="/users/delete/{{ data.content.user_id }}" id="btn-danger"><span class="mdi mdi-delete mdi-36px"></span></a>
                     </td>
                 </tr>
             </table>

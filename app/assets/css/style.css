@@ -110,7 +110,7 @@ body {
 }
 
 #btn-success {
-    color: #0b9f01;
+    color: #919d91;
 }
 
 .modal-content {
@@ -138,5 +138,12 @@ select {
 
 input {
     margin-bottom: 0 !important;
+}
+
+.home_image:hover {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 15px;
+    color: black;
 }
 

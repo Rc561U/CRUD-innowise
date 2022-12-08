@@ -49,3 +49,4 @@ Thumbs.db
 
 /docker/volume/
 vendor/
+/app/composer.lock

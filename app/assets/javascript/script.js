@@ -1,3 +1,6 @@
+import * as $ from 'jquery';
+
+
 addEventListener("click", function (event) {
     if (event.target.id === "monoDelete") {
         let anchor = document.getElementById('delete_link');
@@ -15,7 +18,7 @@ $("#checkAll").click(function () {
 $(function () {
     $("table tbody tr").click(function (e) {
         var u = $(this).data("link");
-        if ($(e.target).is("td")) {
+        if ($(e.target).is("td") && u) {
             window.location.href = u;
         }
     });
