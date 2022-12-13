@@ -427,7 +427,7 @@ module.exports = {
           selector: "div#operations-store-deleteOrder pre span"
         },
         /**
-         * *********User**************
+         * *********UsersApi**************
          */
         userAPIWrapper: {
           selector: "div.swagger-ui div:nth-child(4) > section > div > span:nth-child(3) > div"

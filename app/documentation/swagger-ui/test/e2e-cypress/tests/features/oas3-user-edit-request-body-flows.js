@@ -54,7 +54,7 @@ describe("OAS3 Request Body user edit flows", () => {
           })
       })
   })
-  // Case: User really wants to try out the brand new xml content-type
+  // Case: UsersApi really wants to try out the brand new xml content-type
   it("it should overwrite default value in case of content-type change, even within request body editor(#6836)", () => {
     getRequestBodyFromCY()
       // change media type to xml, because I have forgotten it (sry really wanted to try out the new xml content-type)
@@ -70,7 +70,7 @@ describe("OAS3 Request Body user edit flows", () => {
           })
       })
   })
-  // Case: User wants to get the default value back
+  // Case: UsersApi wants to get the default value back
   it("it reset the user edited value and render the default value in case of try out reset. (#6517)", () => {
     getRequestBodyFromCY()
       // replace default sample with bad value
@@ -89,7 +89,7 @@ describe("OAS3 Request Body user edit flows", () => {
       })
   })
   describe("multipart/", () => {
-    // Case: User wants to execute operation with media-type multipart/ with a enum property. The user expects the first enum value to be used when executed.
+    // Case: UsersApi wants to execute operation with media-type multipart/ with a enum property. The user expects the first enum value to be used when executed.
     it("should use the first enum value on execute if not changed by user (#6976)", () => {
       // test/e2e-cypress/static/documents/features/request-body/multipart/enum.yaml
       getExpandedTryout(

@@ -1,4 +1,4 @@
-# Task 2.10
+# Task 2.11
 
 **Installation:**
 
@@ -28,4 +28,8 @@ npm run build-prod
 ```
 ```shell
 npm run serve
+```
+### Run tests
+```
+./vendor/phpunit/phpunit/phpunit 
 ```

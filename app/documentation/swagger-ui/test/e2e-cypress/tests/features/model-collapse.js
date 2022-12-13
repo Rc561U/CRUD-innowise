@@ -37,14 +37,14 @@ function ModelCollapseTest(baseUrl, urlFragment) {
 
   it("AbstractModel should collapse and expand when toggled clicking button", () => {
     cy.visit(baseUrl)
-    .get("#model-User .model-box .model-box-control")
+    .get("#model-UsersApi .model-box .model-box-control")
     .click()
-    .get("#model-User .model-box .model .inner-object")
+    .get("#model-UsersApi .model-box .model .inner-object")
     .should("exist")
-    .get("#model-User .model-box .model-box-control")
+    .get("#model-UsersApi .model-box .model-box-control")
     .first()
     .click()
-    .get("#model-User .model-box .model .inner-object")
+    .get("#model-UsersApi .model-box .model .inner-object")
     .should("not.exist")
   })
 }

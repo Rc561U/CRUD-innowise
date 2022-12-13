@@ -90,7 +90,6 @@ class ApiUser
         return $res->getBody()->getContents();
     }
 
-
     /**
      * @OA\Delete(
      *     path="/api/users/{id}",
@@ -220,7 +219,7 @@ class ApiUser
      * )
      * @OA\Get(
      *     path="/api/users/{id}",
-     *     tags={"User"},
+     *     tags={"UsersApi"},
      *     summary="Get user by ID",
      *
      *     @OA\Parameter(
@@ -249,7 +248,6 @@ class ApiUser
      */
     public static function get(?int $id, ?array $params, ResponseInterface $response): string
     {
-
         if ($id) {
             $res = self::handleGetRequest($id);
         } elseif (isset($params['page']) && isset($params['per_page'])) {
@@ -276,5 +274,22 @@ class ApiUser
         $options = ['exceptions' => false, 'headers' => self::$headers];
         $uri = "/public/v2/users/";
         return self::setClient()->request('GET', $uri . $params, $options);
+    }
+
+    public function getUsers(?int $id, ?array $params, ResponseInterface $response)
+    {
+        return self::get($id, $params, $response);
+    }
+    public function postUsers(?int $id, ?array $params, ResponseInterface $response)
+    {
+        return self::post($params, $response);
+    }
+    public function patchUsers(?int $id, ?array $params, ResponseInterface $response)
+    {
+        return self::patch($id, $params, $response);
+    }
+    public function deleteUsers(?int $id, ResponseInterface $response)
+    {
+        return self::delete($id, $response);
     }
 }

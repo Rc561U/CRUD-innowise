@@ -524,7 +524,7 @@ paths:
         '400':
           description: Invalid username supplied
         '404':
-          description: User not found
+          description: UsersApi not found
     put:
       tags:
       - user
@@ -550,7 +550,7 @@ paths:
         '400':
           description: Invalid user supplied
         '404':
-          description: User not found
+          description: UsersApi not found
     delete:
       tags:
       - user
@@ -570,7 +570,7 @@ paths:
         '400':
           description: Invalid username supplied
         '404':
-          description: User not found
+          description: UsersApi not found
 securityDefinitions:
   petstore_auth:
     type: oauth2
@@ -632,9 +632,9 @@ definitions:
       userStatus:
         type: integer
         format: int32
-        description: User Status
+        description: UsersApi Status
     xml:
-      name: User
+      name: UsersApi
   Category:
     type: object
     properties:

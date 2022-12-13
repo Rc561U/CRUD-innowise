@@ -28,7 +28,7 @@ components:
           type: boolean
           default: false
       xml:
-        name: Order    
+        name: Order
     User:
       type: object
       properties:
@@ -50,9 +50,9 @@ components:
         userStatus:
           type: integer
           format: int32
-          description: User Status
+          description: UsersApi Status
       xml:
-        name: User    
+        name: UsersApi
     Pet:
       type: object
       required:
@@ -90,4 +90,3 @@ components:
             - sold
       xml:
         name: Pet
-    

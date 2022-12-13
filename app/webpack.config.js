@@ -1,7 +1,6 @@
 const path = require('path');
 const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 

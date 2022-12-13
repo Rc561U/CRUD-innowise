@@ -487,7 +487,7 @@ paths:
         '400':
           description: Invalid username supplied
         '404':
-          description: User not found
+          description: UsersApi not found
     put:
       tags:
       - user
@@ -505,7 +505,7 @@ paths:
         '400':
           description: Invalid user supplied
         '404':
-          description: User not found
+          description: UsersApi not found
       requestBody:
         content:
           application/json:
@@ -530,7 +530,7 @@ paths:
         '400':
           description: Invalid username supplied
         '404':
-          description: User not found
+          description: UsersApi not found
 externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io
@@ -594,9 +594,9 @@ components:
         userStatus:
           type: integer
           format: int32
-          description: User Status
+          description: UsersApi Status
       xml:
-        name: User
+        name: UsersApi
     Tag:
       type: object
       properties:

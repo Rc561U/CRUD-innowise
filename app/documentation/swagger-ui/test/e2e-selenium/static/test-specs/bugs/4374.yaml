@@ -133,9 +133,9 @@ components:
         userStatus:
           type: integer
           format: int32
-          description: User Status
+          description: UsersApi Status
       xml:
-        name: User
+        name: UsersApi
     Tag:
       type: object
       properties:

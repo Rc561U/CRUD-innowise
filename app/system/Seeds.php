@@ -15,7 +15,7 @@ class Seeds
 
     }
 
-    public function fillUserTable($model)
+    public function fillUserTable($model): void
     {
         $genders = ['Male', 'Female'];
         $statuses = ['Active', 'Inactive'];

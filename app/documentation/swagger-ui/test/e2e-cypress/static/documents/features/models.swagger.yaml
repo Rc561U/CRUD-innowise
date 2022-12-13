@@ -49,9 +49,9 @@ definitions:
       userStatus:
         type: integer
         format: int32
-        description: User Status
+        description: UsersApi Status
     xml:
-      name: User  
+      name: UsersApi
   Pet:
     type: object
     required:
@@ -89,4 +89,3 @@ definitions:
         - sold
     xml:
       name: Pet
-  

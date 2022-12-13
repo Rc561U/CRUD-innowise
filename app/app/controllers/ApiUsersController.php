@@ -12,20 +12,15 @@ use GuzzleHttp\Exception\GuzzleException;
 class ApiUsersController extends AbstractController
 {
     public object $model;
-    /**
-     * @var mixed|null
-     */
     private mixed $id;
 
     public function __construct($request, $response)
     {
         parent::__construct($request, $response);
         $this->model = new User();
-//        $this->client = new Client(['base_uri' => 'https://gorest.co.in']);
-
     }
 
-    public function index($id = null): ResponseInterface
+    public function index($id = null)
     {
 
         $this->response->setHeaders([
@@ -77,23 +72,14 @@ class ApiUsersController extends AbstractController
     }
 
 
-    /**
-     * @OA\Get(
-     *     path="/api/users",
-     *     summary="Get list all users",
-     *     tags={"Users"},
-     *     @OA\Response(response="200", description="An example resource")
-     * )
-     */
-    private function handleResponse(string $method)
+    public function handleResponse(string $method): bool|string
     {
         return match ($method) {
-            'GET' => ApiUser::get($this->id,$this->request->getParams(),$this->response) ,
-            'POST' => ApiUser::post($this->request->getJsonRequest(),$this->response),
-            'DELETE' => ApiUser::delete($this->id,$this->response),
-            'PATCH' =>  ApiUser::patch($this->id, $this->request->getJsonRequest(),$this->response),
+            'GET' => ApiUser::get($this->id, $this->request->getParams(), $this->response),
+            'POST' => ApiUser::post($this->request->getJsonRequest(), $this->response),
+            'DELETE' => ApiUser::delete($this->id, $this->response),
+            'PATCH' => ApiUser::patch($this->id, $this->request->getJsonRequest(), $this->response),
         };
     }
-
 
 }

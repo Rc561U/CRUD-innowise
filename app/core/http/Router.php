@@ -53,7 +53,7 @@ class Router
     /**
      * @return void
      */
-    private function mapRequest(): void
+    public function mapRequest(): void
     {
         self::dispatch($this->request->getUri());
         $this->mainProcessor();
@@ -97,7 +97,7 @@ class Router
      * @param $url
      * @return bool
      */
-    public static function matchRoute($url)
+    public static function matchRoute($url): bool
     {
         foreach (self::$routes as $pattern => $route) {
             if (preg_match("#$pattern#i", $url, $matches)) {
@@ -135,7 +135,6 @@ class Router
         } else {
             $response = $controllerClass->$action();
         }
-
         $this->responseProcessor->process($response);
     }
 
@@ -152,3 +151,4 @@ class Router
         };
     }
 }
+

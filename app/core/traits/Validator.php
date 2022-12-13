@@ -19,7 +19,7 @@ trait Validator
     public function checkEmail($email, $flag = false): void
     {
 //        if ($flag && !$this->isEmailExist($email)) {
-//            $this->errors['email'] = 'User with this email is not exists';
+//            $this->errors['email'] = 'UsersApi with this email is not exists';
 //        }
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $this->errors['email'] = 'No valid email';

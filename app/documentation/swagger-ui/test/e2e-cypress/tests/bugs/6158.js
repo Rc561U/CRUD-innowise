@@ -2,7 +2,7 @@ describe("#6158: read-only property is not hidden in `POST/PUT`", () => {
   describe("POST", () => {
     it("should hide property 'id'", () => {
       cy.visit("/?url=/documents/bugs/6158.yaml")
-        .get("#operations-User-post_users")
+        .get("#operations-UsersApi-post_users")
         .click()
         .get(".parameters[data-property-name='id']")
         .should("not.exist")
@@ -11,7 +11,7 @@ describe("#6158: read-only property is not hidden in `POST/PUT`", () => {
     })
     it("should hide property 'id' when trying it out", () => {
       cy.visit("/?url=/documents/bugs/6158.yaml")
-        .get("#operations-User-post_users")
+        .get("#operations-UsersApi-post_users")
         .click()
         .get(".try-out__btn")
         .click()
@@ -28,7 +28,7 @@ describe("#6158: read-only property is not hidden in `POST/PUT`", () => {
   describe("PUT", () => {
     it("should hide property 'id'", () => {
       cy.visit("/?url=/documents/bugs/6158.yaml")
-        .get("#operations-User-put_users")
+        .get("#operations-UsersApi-put_users")
         .click()
         .get(".parameters[data-property-name='id']")
         .should("not.exist")
@@ -37,7 +37,7 @@ describe("#6158: read-only property is not hidden in `POST/PUT`", () => {
     })
     it("should hide property 'id' when trying it out", () => {
       cy.visit("/?url=/documents/bugs/6158.yaml")
-        .get("#operations-User-put_users")
+        .get("#operations-UsersApi-put_users")
         .click()
         .get(".try-out__btn")
         .click()

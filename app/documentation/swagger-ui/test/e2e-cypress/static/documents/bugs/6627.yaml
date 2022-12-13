@@ -29,7 +29,7 @@ components:
       items:
         type: object
         xml:
-          name: User
+          name: UsersApi
         properties:
           id:
             type: integer

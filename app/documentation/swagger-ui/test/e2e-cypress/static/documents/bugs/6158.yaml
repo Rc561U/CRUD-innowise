@@ -8,11 +8,11 @@ paths:
   /users:
     get:
       tags:
-      - User
+      - UsersApi
       summary: Get Users
       responses:
         200:
-          description: User List
+          description: UsersApi List
           content:
             application/json:
               schema:
@@ -21,7 +21,7 @@ paths:
                   $ref: '#/components/schemas/User'
     post:
       tags:
-      - User
+      - UsersApi
       summary: Create a user
       requestBody:
         content:
@@ -33,7 +33,7 @@ paths:
           description: Created successfully
     put:
       tags:
-      - User
+      - UsersApi
       summary: Update user
       requestBody:
         content:
