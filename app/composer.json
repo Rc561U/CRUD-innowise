@@ -1,8 +1,8 @@
 {
-  "name": "crud/mvc",
+  "name": "localstack/test",
   "autoload": {
     "psr-4": {
-      "Crud\\Mvc\\": ""
+      "App\\": ""
     }
   },
   "authors": [
@@ -10,15 +10,8 @@
       "name": "Anton Ramancou"
     }
   ],
-
   "require": {
-    "vlucas/phpdotenv": "^5.5",
-    "fakerphp/faker": "^1.20",
-    "twig/twig": "^2.0",
-    "guzzlehttp/guzzle": "^6.3",
-    "zircote/swagger-php": "^4.5"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^9.5"
+    "aws/aws-sdk-php": "^3.257",
+    "guzzlehttp/guzzle": "^7.5"
   }
 }
