@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Create</title>{% endblock %}
+{% block body %}
+    <div class="container" id="container">
+        <div class="box">
+            <h3 class="display-4 text-center">Create</h3><br>
+            <div id="status">
+
+            </div>
+            <div class="row">
+                {% if data.errors is defined  %}
+                    {% for error in data.errorss %}
+                        {{ error }}
+                    {% endfor %}
+                {% else %}
+                {% endif %}
+                <div class="col">
+                    <form method="post" id="create_form" action="create">
+
+                        <!-- Email unique -->
+                        <div class="mb-3 ">
+                            <label for="email" class="form-label mb-0">Email address</label>
+                        {% if data.errors.email is defined   %}
+                            <input type="email" class="form-control" id="email" name="email" value=""
+                                   placeholder="name@example.com">
+                            <div class="errorMsg">
+                                {{ data.errors.email }}
+                            </div>
+                        {% else %}
+                            <input type="email" class="form-control" id="email" name="email" value="{{ data.content.email }}"
+                                   placeholder="name@example.com">
+                        {% endif %}
+                        </div>
+
+
+                        {#  First and last name #}
+                        <div class="mb-3 ">
+                            <label for="name" class="form-label mb-0">Your first and last name</label>
+                            {% if data.errors.name is defined  %}
+                                <input type="text" class="form-control" id="name" name="name" value=""
+                                       placeholder="Jim Royal">
+                                <div class="errorMsg">
+                                    {{ data.errors.name }}
+                                </div>
+                            {% elseif data.content.name %}
+                                <input type="text" class="form-control" id="name" name="name" value="{{ data.content.name }}"
+                                       placeholder="Jim Royal">
+                            {% else %}
+                                <input type="text" class="form-control" id="name" name="name" value=""
+                                       placeholder="Jim Royal">
+                            {% endif %}
+                        </div>
+
+
+                        <!-- Gender dropdown -->
+                        <div class="mb-3 ">
+                            <label for="gender">Gender</label>
+                            {% if data.errors.gender is defined %}
+                                <select name="gender" class="form-control text-center" id="gender">
+
+                                <option value="" selected disabled hidden>-- Choose your gender --</option>
+                                <option value="Male" >Male</option>
+                                <option value="Female" >Female</option>
+                                </select>
+                                <div class="errorMsg">
+                                    {{ data.errors.gender }}
+                                </div>
+                            {% elseif data.content.gender %}
+                                <select name="gender" class="form-control text-center" id="gender">
+                                        <option value="Male" {{ (data.content.gender == "Male") ? "selected=\"selected\"" : '' }}>Male</option>
+                                        <option value="Female" {{ (data.content.gender == "Female") ? "selected=\"selected\"" : '' }}>Female</option>
+                                </select>
+                            {% else %}
+                                <select name="gender" class="form-control text-center" id="gender" >
+
+                                    <option value="" selected disabled hidden>-- Choose your gender --</option>
+                                    <option value="Male" >Male</option>
+                                    <option value="Female" >Female</option>
+                                </select>
+                            {% endif %}
+                        </div>
+
+                        <!-- Status dropdown -->
+                        <div class="mb-3 ">
+                            <label for="status">Status</label>
+                            {% if data.errors.status is defined %}
+                            <select name="status" class="form-control text-center" id="status">
+                                    <option value="" selected disabled hidden>-- Choose your status --</option>
+                                    <option value="Active" >Active</option>
+                                    <option value="Inactive" >Inactive</option>
+                            </select>
+                            <div class="errorMsg">
+                                {{ data.errors.status }}
+                            </div>
+                            {% elseif data.content.status %}
+                            <select name="status" class="form-control text-center" id="status">
+                                <option value="Active" {{ (data.content.status == "Active") ? "selected=\"selected\"" : '' }}>Active</option>
+                                <option value="Inactive" {{ (data.content.status == "Inactive") ? "selected=\"selected\"" : '' }}>Inactive</option>
+                            </select>
+                            {% else %}
+                            <select name="status" class="form-control text-center" id="status">
+                                <option value="" selected disabled hidden>-- Choose your status --</option>
+                                <option value="Active" >Active</option>
+                                <option value="Inactive" >Inactive</option>
+                            </select>
+                            {% endif %}
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                        <p>or view <a href="/users">existing</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}<script src="/assets/javascript/JustValidate/create_validation.js" defer></script>{% endblock %}
+
